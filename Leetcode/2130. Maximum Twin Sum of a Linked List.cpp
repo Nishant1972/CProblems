@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* reverse(ListNode* head) {
+    void reverse(ListNode* head) {
         ListNode* curr = head, *prev = NULL, *nex = NULL;
         
         while(curr != NULL) {
@@ -19,7 +19,7 @@ public:
             prev = curr;
             curr = nex;
         }
-        return prev;
+        head = prev;
     }
     
     int pairSum(ListNode* head) {
@@ -28,13 +28,14 @@ public:
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode* sec = reverse(slow); // can also use stack...   
+        
+        reverse(slow); // can also use stack...   
         
         int res = 0;
-        while(sec) {
-            res = max(res, head->val + sec->val);
+        while(slow) {
+            res = max(res, head->val + slow->val);
             head = head->next;
-            sec = sec->next;
+            slow = slow->next;
         }
         
         return res;
