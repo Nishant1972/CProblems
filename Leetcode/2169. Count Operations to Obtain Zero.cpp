@@ -1,9 +1,9 @@
 class Solution {
 public:
-    int countOperations(int num1, int num2) {
+    int countOperations(int a, int b) {
         int count = 0;
-        while(num1 && num2) {
-            (num1 > num2) ? num1 -= num2 : num2 -= num1;
+        while(a && b) {
+            (a > b) ? a -= b : b -= a;
             ++count;
         }  
         return count;
